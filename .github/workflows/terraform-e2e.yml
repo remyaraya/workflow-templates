@@ -12,9 +12,9 @@ jobs:
 
       - name: Prepare Terraform
         uses: hashicorp/setup-terraform@v1
-          with:
-            terraform_version: ${{ secrets.TERRAFORM_VERSION }}
-            cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_WORKSPACE }}
+        with:
+          terraform_version: ${{ secrets.TERRAFORM_VERSION }}
+          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_WORKSPACE }}
 
       - name: Terraform Format
         id: tf-fmt
