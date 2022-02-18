@@ -1,4 +1,4 @@
-name: "Terraform End 2 End Testing Workflow"
+name: "Terraform Apply Workflow"
 
 on:
   workflow_call:
@@ -41,8 +41,3 @@ jobs:
         id: tf-apply
         working-directory: tests/defaults
         run: terraform apply -auto-approve
-
-      - name: Terraform Destroy
-        id: tf-destroy
-        working-directory: tests/defaults
-        run: terraform apply -destroy -auto-approve
