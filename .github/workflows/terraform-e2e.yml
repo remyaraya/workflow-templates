@@ -2,6 +2,11 @@ name: "Terraform End-2-End Workflow"
 
 on:
   workflow_call:
+    secrets:
+      tf_token:
+        required: true
+      tf_version:
+        required: true
 
 jobs:
   terraform-e2e:
