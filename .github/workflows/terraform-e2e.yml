@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prepare Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
 
       - name: Prepare Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: ${{ secrets.TERRAFORM_VERSION }}
-          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Format
         id: tf-fmt
