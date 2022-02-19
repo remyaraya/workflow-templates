@@ -1,43 +1,43 @@
-name: "Terraform Apply Workflow"
+# name: "Terraform Apply Workflow"
 
-on:
-  workflow_call:
+# on:
+#   workflow_call:
 
-jobs:
-  terraform:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Prepare Checkout
-        uses: actions/checkout@main
+# jobs:
+#   terraform-apply:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Prepare Checkout
+#         uses: actions/checkout@main
 
-      - name: Prepare Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: ${{ secrets.TERRAFORM_VERSION }}
-          cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+#       - name: Prepare Terraform
+#         uses: hashicorp/setup-terraform@v1
+#         with:
+#           terraform_version: ${{ secrets.TERRAFORM_VERSION }}
+#           cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
 
-      - name: Terraform Format
-        id: tf-fmt
-        working-directory: tests/defaults
-        run: terraform fmt -check
-        continue-on-error: true
+#       - name: Terraform Format
+#         id: tf-fmt
+#         working-directory: tests/defaults
+#         run: terraform fmt -check
+#         continue-on-error: true
 
-      - name: Terraform Init
-        id: tf-init
-        working-directory: tests/defaults
-        run: terraform init -upgrade
+#       - name: Terraform Init
+#         id: tf-init
+#         working-directory: tests/defaults
+#         run: terraform init -upgrade
 
-      - name: Terraform Validate
-        id: tf-validate
-        working-directory: tests/defaults
-        run: terraform validate
+#       - name: Terraform Validate
+#         id: tf-validate
+#         working-directory: tests/defaults
+#         run: terraform validate
 
-      - name: Terraform Plan
-        id: tf-plan
-        working-directory: tests/defaults
-        run: terraform plan
+#       - name: Terraform Plan
+#         id: tf-plan
+#         working-directory: tests/defaults
+#         run: terraform plan
 
-      - name: Terraform Apply
-        id: tf-apply
-        working-directory: tests/defaults
-        run: terraform apply -auto-approve
+#       - name: Terraform Apply
+#         id: tf-apply
+#         working-directory: tests/defaults
+#         run: terraform apply -auto-approve
